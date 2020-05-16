@@ -15,7 +15,7 @@ export const login = ({ username, password }) => {
    Name:username,
    Password:password
   }
-  console.log(data)
+  // console.log(data)
   return request({
     url: 'api/Authroize',
     data,

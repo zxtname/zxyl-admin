@@ -21,7 +21,7 @@
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm()">登录</el-button>
                 </div>
-                <p class="login-tips">Tips : 用户名和密码随便填。</p>
+                <p class="login-tips">Tips : 注册请联系管理员。</p>
             </el-form>
         </div>
     </div>
@@ -47,9 +47,14 @@ export default {
         submitForm() {
             this.$refs.login.validate(async valid => {
                 if (valid) {
-					//  let res=await  login(this.param)					
-					// console.log(res)
-					// sessionStorage.setItem("token",res.data.token)
+					 let res=await  login(this.param)					
+					console.log(res)
+					if(res.code!=1)
+					{
+						this.$message.error("登陆失败")
+						return;
+					}
+					sessionStorage.setItem("token",res.data.token)
 					// let info=await getUserInfo();
 					// console.log(info);
 					// sessionStorage.setItem()
